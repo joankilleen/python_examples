@@ -10,14 +10,30 @@ response_dict = r.json()
 
 # Process results.
 repo = response_dict[0]
-# for key in sorted(repo.keys()):
-#     print(key)
-# print(f"repo name: {repo['name']}")
+for repo in response_dict:
+	repo_name = repo['name']
+	print(f"repo name: {repo_name}")
+for repo in response_dict:
+	repo_name = repo['name']
+	if repo_name=='python_examples':
+		commits_url = f"https://api.github.com/repos/joankilleen/{repo_name}/commits"
+		r_commits = requests.get(commits_url, headers=headers)
+		print(f"Commits Status code: {r_commits.status_code}")
+		commits = r_commits.json()
+		for commit in commits:
+			print(f"{commit['sha']}")
+		
+#  	
+# 	
+#           
+#          
+#           print(f"Commits Status code: {r_commits.status_code}")
+#           
+     
+# # repo_name = repo['name']
 
-repo_name = repo['name']
+# # commits_url = f"https://api.github.com/repos/joankilleen/{repo_name}/commits"
 
-commits_url = f"https://api.github.com/repos/joankilleen/{repo_name}/commits"
-
-r_commits = requests.get(commits_url, headers=headers)
-print(f"Commits Status code: {r.status_code}")
-print(f"{r_commits.json()}")
+# # r_commits = requests.get(commits_url, headers=headers)
+# # print(f"Commits Status code: {r.status_code}")
+# # print(f"{r_commits.json()}")
