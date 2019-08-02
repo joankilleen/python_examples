@@ -2,8 +2,7 @@ from commit import Commit
 from datetime import date
 import github_calls
 
-def get_commits_since_date(repo, commit_date=date.fromordinal(date.today().toordinal()-1)):
-   print(f"{commit_date.strftime('%Y-%m-%d')}")
+def get_commits_since_date(repo, commit_date):
    commits_url = f"https://api.github.com/repos/joankilleen/{repo}/commits?since={commit_date}"
    print(commits_url)
 
